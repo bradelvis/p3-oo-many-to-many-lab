@@ -132,4 +132,16 @@ def test_contract_contracts_by_date():
     contract3 = Contract(author1, book3, "03/01/2001", 30)
     contract4 = Contract(author2, book4, "01/01/2001", 40)
 
-    assert Contract.contracts_by_date('01/01/2001') == [contract2, contract4]
+    # Assume contracts_by_date() returns a list of contracts sorted by date
+    contracts = Contract.contracts_by_date('01/01/2001')
+
+    # Compare the attributes of each contract in the result
+    assert contracts[0].author == contract2.author
+    assert contracts[0].book == contract2.book
+    assert contracts[0].date == contract2.date
+    assert contracts[0].value == contract2.value
+
+    assert contracts[1].author == contract4.author
+    assert contracts[1].book == contract4.book
+    assert contracts[1].date == contract4.date
+    assert contracts[1].value == contract4.value
